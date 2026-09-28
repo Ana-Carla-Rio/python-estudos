@@ -1,0 +1,41 @@
+"""
+Projeto: Matriz de Priorização e Triagem de Incidentes (ITIL / ITSM)
+Objetivo: Classificar chamados conforme Impacto x Urgência e estipular SLA.
+"""
+
+def classificar_chamado(id_ticket, descricao, impacto, urgencia):
+    # Matriz clássica ITIL: P1 (Crítica) até P4 (Baixa)
+    if impacto.upper() == "ALTO" and urgencia.upper() == "ALTA":
+        prioridade = "P1 - Crítica"
+        sla_horas = 2
+    elif impacto.upper() == "ALTO" or urgencia.upper() == "ALTA":
+        prioridade = "P2 - Alta"
+        sla_horas = 8
+    elif impacto.upper() == "MEDIO" and urgencia.upper() == "MEDIA":
+        prioridade = "P3 - Média"
+        sla_horas = 24
+    else:
+        prioridade = "P4 - Baixa"
+        sla_horas = 48
+
+    return {
+        "Ticket": id_ticket,
+        "Descrição": descricao,
+        "Prioridade": prioridade,
+        "SLA de Resolução": f"{sla_horas} horas"
+    }
+
+if __name__ == "__main__":
+    chamados_para_triagem = [
+        {"id": "INC-001", "desc": "Servidor de pagamentos fora do ar", "impacto": "Alto", "urgencia": "Alta"},
+        {"id": "INC-002", "desc": "Usuário esqueceu a senha de rede", "impacto": "Baixo", "urgencia": "Media"},
+        {"id": "INC-003", "desc": "Relatório financeiro com lentidão", "impacto": "Medio", "urgencia": "Media"}
+    ]
+
+    print("=" * 50)
+    print("         TRIAGEM AUTOMÁTICA DE INCIDENTES")
+    print("=" * 50)
+    for c in chamados_para_triagem:
+        res = classificar_chamado(c["id"], c["desc"], c["impacto"], c["urgencia"])
+        print(f"[{res['Prioridade']}] {res['Ticket']} - {res['Descrição']} (SLA: {res['SLA de Resolução']})")
+    print("=" * 50)
