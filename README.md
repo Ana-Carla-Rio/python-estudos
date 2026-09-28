@@ -1,4 +1,4 @@
-# 🐍 Python Estudos — Fundamentos, Exercícios e Projetos
+# 🐍 Python Estudos - Fundamentos, Exercícios e Projetos
 
 Repositório dedicado ao aprendizado contínuo da linguagem Python, cobrindo desde lógica de programação e algoritmos até automações práticas voltadas a regras de negócio e análise de processos.
 
