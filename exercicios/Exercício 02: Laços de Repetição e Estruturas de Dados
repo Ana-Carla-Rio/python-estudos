@@ -1,0 +1,26 @@
+"""
+Exercício 02: Laços de Repetição e Estruturas de Dados (Listas e Dicionários)
+Objetivo: Filtrar e totalizar registros operacionais.
+"""
+
+demandas = [
+    {"id": "REQ-101", "categoria": "Acesso", "status": "Concluído", "tempo_horas": 1.5},
+    {"id": "REQ-102", "categoria": "Hardware", "status": "Pendente", "tempo_horas": 4.0},
+    {"id": "REQ-103", "categoria": "Software", "status": "Concluído", "tempo_horas": 2.0},
+    {"id": "REQ-104", "categoria": "Acesso", "status": "Pendente", "tempo_horas": 0.5},
+    {"id": "REQ-105", "categoria": "Rede", "status": "Concluído", "tempo_horas": 3.0},
+]
+
+def analisar_demandas(lista_demandas):
+    concluidas = [d for d in lista_demandas if d["status"] == "Concluído"]
+    pendentes = [d for d in lista_demandas if d["status"] == "Pendente"]
+    
+    total_horas_concluidas = sum(d["tempo_horas"] for d in concluidas)
+    
+    print(f"Total de demandas: {len(lista_demandas)}")
+    print(f"Demandas concluídas: {len(concluidas)}")
+    print(f"Demandas pendentes: {len(pendentes)}")
+    print(f"Tempo total investido em concluídas: {total_horas_concluidas}h")
+
+if __name__ == "__main__":
+    analisar_demandas(demandas)
