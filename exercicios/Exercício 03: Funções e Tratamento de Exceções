@@ -1,0 +1,20 @@
+"""
+Exercício 03: Funções e Tratamento de Exceções (Try/Except)
+Objetivo: Garantir que o sistema não trave ao receber dados inválidos.
+"""
+
+def calcular_media_atendimentos(total_chamados, total_dias):
+    try:
+        media = total_chamados / total_dias
+        return round(media, 2)
+    except ZeroDivisionError:
+        print("[Erro] O total de dias não pode ser zero.")
+        return 0.0
+    except TypeError:
+        print("[Erro] Os valores informados devem ser numéricos.")
+        return None
+
+if __name__ == "__main__":
+    print("Teste 1 (Válido):", calcular_media_atendimentos(120, 5))
+    print("Teste 2 (Divisão por zero):", calcular_media_atendimentos(50, 0))
+    print("Teste 3 (Tipo inválido):", calcular_media_atendimentos("cem", 5))
